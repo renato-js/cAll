@@ -12,15 +12,18 @@
 
 ;(function (window,document,undefined) 
 {
-	$.fn.cAll = function (_function,_elemento) 
+
+	$.cAll = function (_function, _elemento) 
 	{
+		_elemento = document.getElementById(_elemento);
+
 		//animacao boca
 		if("ontouchstart" in window)
 		{
 			//touchscreen
 			_elemento.addEventListener("touchstart",function(){_function()}, false);
 		}
-		else if(!_elemento.addEventListener)
+		else if(!document.addEventListener)
 		{
 			//ie 8-
 			_elemento.attachEvent("onclick", function(){_function()});
@@ -30,9 +33,7 @@
 			//mozilla, webkit
 			_elemento.addEventListener("click", function(){_function()}, false);
 		}
-
 	}
-
 })(window,document);
 
 
